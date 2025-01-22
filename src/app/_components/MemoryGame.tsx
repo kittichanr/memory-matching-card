@@ -3,22 +3,22 @@
 import { useContext } from "react";
 
 import { StateContext } from "../_provider/StateProvider";
-import { EnterName } from "./EnterName";
+import { Start } from "./Start";
 import { MatchCard } from "./MatchCard";
 
-export function Main() {
+export function MemoryGame() {
   const { playerName, state } = useContext(StateContext);
 
   const renderState = () => {
     switch (state) {
       case "start":
-        return <EnterName />;
+        return <Start />;
       case "playing":
         return <MatchCard playerName={playerName} />;
-      case "end":
+      case "score":
         return <div>End</div>;
     }
   };
 
-  return <div className="w-full max-w-xs">{renderState()}</div>;
+  return <div>{renderState()}</div>;
 }

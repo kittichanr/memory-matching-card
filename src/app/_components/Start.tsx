@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 import { StateContext } from "../_provider/StateProvider";
 
-export function EnterName() {
+export function Start() {
   const [name, setName] = useState("");
 
   const { updateState, updatePlayerName } = useContext(StateContext);
@@ -26,17 +26,25 @@ export function EnterName() {
           onChange={(e) => setName(e.target.value)}
           className="w-full rounded-full px-4 py-2 text-black"
         />
-        <button
-          type="submit"
-          className={`rounded-full bg-white/10 px-10 py-3 font-semibold transition ${
-            name.length === 0
-              ? "bg-gray-300"
-              : "bg-blue-500 text-white hover:bg-blue-700"
-          } `}
-          disabled={name.length === 0}
-        >
-          Start
-        </button>
+        <div className="flex flex-row">
+          <button
+            type="submit"
+            className={`rounded-full bg-white/10 px-10 py-3 font-semibold transition ${
+              name.length === 0
+                ? "bg-gray-300"
+                : "bg-blue-500 text-white hover:bg-blue-700"
+            } `}
+            disabled={name.length === 0}
+          >
+            Play
+          </button>
+          <button
+            className="rounded-full bg-blue-500 px-10 py-3 font-semibold text-white"
+            onClick={() => updateState("score")}
+          >
+            Scoreboard
+          </button>
+        </div>
       </form>
     </div>
   );

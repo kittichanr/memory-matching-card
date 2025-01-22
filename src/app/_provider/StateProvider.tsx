@@ -2,7 +2,7 @@
 
 import React, { createContext, useState } from "react";
 
-export type State = "start" | "playing" | "end";
+export type State = "start" | "playing" | "score";
 
 const StateContext = createContext({
   state: "start",
