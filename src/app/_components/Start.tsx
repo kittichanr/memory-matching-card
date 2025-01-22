@@ -8,6 +8,7 @@ export function Start() {
   const [name, setName] = useState("");
 
   const { updateState, updatePlayerName } = useContext(StateContext);
+  console.log(name.length);
 
   return (
     <div className="w-full max-w-xs">
@@ -29,7 +30,7 @@ export function Start() {
         <div className="flex flex-row">
           <button
             type="submit"
-            className={`rounded-full bg-white/10 px-10 py-3 font-semibold transition ${
+            className={`rounded-full px-10 py-3 font-semibold transition ${
               name.length === 0
                 ? "bg-gray-300"
                 : "bg-blue-500 text-white hover:bg-blue-700"

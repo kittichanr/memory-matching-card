@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { StateContext } from "../_provider/StateProvider";
 import { Start } from "./Start";
 import { MatchCard } from "./MatchCard";
+import { Scoreboard } from "./Scoreboard";
 
 export function MemoryGame() {
   const { playerName, state } = useContext(StateContext);
@@ -16,7 +17,7 @@ export function MemoryGame() {
       case "playing":
         return <MatchCard playerName={playerName} />;
       case "score":
-        return <div>End</div>;
+        return <Scoreboard />;
     }
   };
 
