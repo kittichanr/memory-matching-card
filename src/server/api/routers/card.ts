@@ -1,4 +1,3 @@
-import { get } from "http";
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
@@ -34,5 +33,30 @@ export const cardRouter = createTRPCRouter({
         },
       });
     }),
-  // getScore: publicProcedure,
+  getScore: publicProcedure
+    .input(
+      z.object({
+        page: z.number().min(1),
+        pageSize: z.number().min(1),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const { page, pageSize } = input;
+      const skip = (page - 1) * pageSize;
+
+      const scores = await ctx.db.score.findMany({
+        skip,
+        take: pageSize,
+        orderBy: {
+          score: "asc",
+        },
+      });
+
+      const totalScores = await ctx.db.score.count(); // For total count
+
+      return {
+        scores,
+        totalScores,
+      };
+    }),
 });
