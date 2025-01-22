@@ -38,11 +38,6 @@ export function MatchCard({ playerName }: Props) {
   const handleClick = (index: number, value: number) => {
     clearTimeout(timer.current!);
 
-    timer.current = setTimeout(() => {
-      setFirstCard(defaultState);
-      setSecondCard(defaultState);
-    }, 1500);
-
     if (
       firstCard.index === null ||
       (firstCard.index !== null && secondCard.index !== null)
@@ -53,6 +48,11 @@ export function MatchCard({ playerName }: Props) {
     } else if (secondCard.index === null && firstCard.index !== index) {
       setSecondCard({ index, value });
       setMoves((moves) => moves + 1);
+
+      timer.current = setTimeout(() => {
+        setFirstCard(defaultState);
+        setSecondCard(defaultState);
+      }, 1000);
 
       if (firstCard.value === value) {
         setRemainingCards(

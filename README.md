@@ -27,6 +27,21 @@ short delay.
   3. Retrieving high scores (e.g., /api/leaderboard ).
 - Use a database to store player scores and statistics (if necessary).
 
+## Database Schema
+```
+Score {
+    id        String   @id @default(uuid())
+    name      String
+    score     Int
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([name])
+}
+
+```
+
+
 # Stack
 - Next.js
 - Prisma Postgres
@@ -35,6 +50,7 @@ short delay.
 # Installation
 
 1. run docker for instance postgres database `docker-compose -f docker-compose.yml up`
-2. install dependencies `yarn install`
-3. `yarn db:push` for initial database schema in database
-4. `yarn dev` for run Next.js
+2. duplicate file `.env.example` and rename to `.env`
+3. install dependencies `yarn install`
+4. `yarn db:push` for initial database schema in database
+5. `yarn dev` for run Next.js
