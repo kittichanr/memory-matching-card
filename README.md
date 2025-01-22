@@ -34,7 +34,7 @@ short delay.
 
 # Installation
 
-1. run docker for instance postgres database `docker -f docker-compose.yml up`
+1. run docker for instance postgres database `docker-compose -f docker-compose.yml up`
 2. install dependencies `yarn install`
 3. `yarn db:push` for initial database schema in database
 4. `yarn dev` for run Next.js
