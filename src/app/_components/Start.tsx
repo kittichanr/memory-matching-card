@@ -8,7 +8,6 @@ export function Start() {
   const [name, setName] = useState("");
 
   const { updateState, updatePlayerName } = useContext(StateContext);
-  console.log(name.length);
 
   return (
     <div className="w-full max-w-xs">
