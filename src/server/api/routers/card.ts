@@ -6,16 +6,17 @@ import shuffle from "~/utils/shuffle";
 export const cardRouter = createTRPCRouter({
   getCards: publicProcedure.query(({}) => {
     const items = [1, 2, 3, 4, 5];
-    const randomSet = Math.floor(Math.random() * 4);
+    const randomSet = Math.floor(Math.random() * 4) + 1;
 
     const allItems = shuffle([...items, ...items]).map((value) => ({
       value: value,
-      url: `https://robohash.org/${value}?set=set${randomSet})}`,
+      url: `https://robohash.org/${value}?set=set${randomSet}`,
     }));
+    console.log("test", allItems);
 
     const remainingCards = shuffle([...items]).map((value) => ({
       value: value,
-      url: `https://robohash.org/${value}?set=set${randomSet})}`,
+      url: `https://robohash.org/${value}?set=set${randomSet}`,
     }));
 
     return {
@@ -52,7 +53,7 @@ export const cardRouter = createTRPCRouter({
         },
       });
 
-      const totalScores = await ctx.db.score.count(); // For total count
+      const totalScores = await ctx.db.score.count();
 
       return {
         scores,

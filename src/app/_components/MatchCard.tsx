@@ -87,7 +87,7 @@ export function MatchCard({ playerName }: Props) {
               width={40}
               height={40}
               alt={`image ${index}`}
-              src={`${item.url}&&size=40x40`}
+              src={`${item.url}&size=40x40`}
             />
           );
         })}
@@ -108,7 +108,7 @@ export function MatchCard({ playerName }: Props) {
               <div className="backSide"></div>
               <Image
                 alt={`image ${index}`}
-                src={`${item.url}&&size=120x120`}
+                src={`${item.url}&size=120x120`}
                 width={120}
                 height={120}
               />
